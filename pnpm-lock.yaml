@@ -137,13 +137,13 @@ importers:
         version: 10.9.0(@stylistic/eslint-plugin@5.10.0(eslint@10.2.1(jiti@2.4.2)))(eslint@10.2.1(jiti@2.4.2))(vue-eslint-parser@10.4.0(eslint@10.2.1(jiti@2.4.2)))
       eslint-plugin-vuejs-accessibility:
         specifier: ^2.5.0
-        version: 2.5.0(eslint@10.2.1(jiti@2.4.2))(globals@17.5.0)
+        version: 2.5.0(eslint@10.2.1(jiti@2.4.2))(globals@17.6.0)
       eslint-plugin-yml:
         specifier: ^3.3.2
         version: 3.3.2(eslint@10.2.1(jiti@2.4.2))
       globals:
-        specifier: ^17.5.0
-        version: 17.5.0
+        specifier: ^17.6.0
+        version: 17.6.0
       html-webpack-plugin:
         specifier: ^5.6.7
         version: 5.6.7(webpack@5.106.2)
@@ -2905,8 +2905,8 @@ packages:
     resolution: {integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ==}
     engines: {node: '>=18'}
 
-  globals@17.5.0:
-    resolution: {integrity: sha512-qoV+HK2yFl/366t2/Cb3+xxPUo5BuMynomoDmiaZBIdbs+0pYbjfZU+twLhGKp4uCZ/+NbtpVepH5bGCxRyy2g==}
+  globals@17.6.0:
+    resolution: {integrity: sha512-sepffkT8stwnIYbsMBpoCHJuJM5l98FUF2AnE07hfvE0m/qp3R586hw4jF4uadbhvg1ooIdzuu7CsfD2jzCaNA==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -8037,7 +8037,7 @@ snapshots:
       core-js-compat: 3.49.0
       eslint: 10.2.1(jiti@2.4.2)
       find-up-simple: 1.0.1
-      globals: 17.5.0
+      globals: 17.6.0
       indent-string: 5.0.0
       is-builtin-module: 5.0.0
       jsesc: 3.1.0
@@ -8060,11 +8060,11 @@ snapshots:
     optionalDependencies:
       '@stylistic/eslint-plugin': 5.10.0(eslint@10.2.1(jiti@2.4.2))
 
-  eslint-plugin-vuejs-accessibility@2.5.0(eslint@10.2.1(jiti@2.4.2))(globals@17.5.0):
+  eslint-plugin-vuejs-accessibility@2.5.0(eslint@10.2.1(jiti@2.4.2))(globals@17.6.0):
     dependencies:
       aria-query: 5.3.0
       eslint: 10.2.1(jiti@2.4.2)
-      globals: 17.5.0
+      globals: 17.6.0
       vue-eslint-parser: 10.4.0(eslint@10.2.1(jiti@2.4.2))
     transitivePeerDependencies:
       - supports-color
@@ -8478,7 +8478,7 @@ snapshots:
 
   globals@16.5.0: {}
 
-  globals@17.5.0: {}
+  globals@17.6.0: {}
 
   globalthis@1.0.4:
     dependencies:
