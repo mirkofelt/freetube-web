@@ -572,7 +572,7 @@ Settings:
     SponsorBlock Settings: Sponsorblockering
     Skip Options:
       Skip Option: Hoppa över-alternativ
-      Show In Seek Bar: Visa i sökpanelen
+      Show In Seek Bar: Visa i uppspelningsfältet
       Do Nothing: Gör ingenting
       Auto Skip: Hoppa över automatiskt
       Prompt To Skip: Fråga för att hoppa över
@@ -670,7 +670,7 @@ Profile:
   No channel(s) have been selected: 'Inga kanaler har markerats'
   ? This is your primary profile.  Are you sure you want to delete the selected channels?  The same channels will be deleted in any profile they are found in.
   : 'Det här är din primära profil.  Är du säker på att du vill ta bort de valda kanalerna?  Samma kanaler kommer att tas bort i alla profiler där de finns.'
-  Are you sure you want to delete the selected channels?  This will not delete the channel from any other profile.: 'Är du säker på att du vill ta bort de markerade kanalerna?   Detta tar inte bort kanalen från någon annan profil.'
+  Are you sure you want to delete the selected channels?  This will not delete the channel from any other profile.: 'Är du säker på att du vill ta bort de markerade kanalerna?  Detta tar inte bort kanalen från någon annan profil.'
 #On Channel Page
   Profile Filter: Profilfilter
   Profile Settings: Profil
@@ -767,7 +767,7 @@ Video:
   Live Chat: 'Livechatt'
   Enable Live Chat: 'Aktivera livechatt'
   Live Chat is currently not supported in this build.: 'Livechatt stöds för närvarande inte i denna version.'
-  Live chat is enabled. Chat messages will appear here once sent.: 'Livechatt är aktiverad.   Chattmeddelanden visas här när de har skickats.'
+  Live chat is enabled. Chat messages will appear here once sent.: 'Livechatt är aktiverad.  Chattmeddelanden visas här när de har skickats.'
   'Live Chat is currently not supported with the Invidious API. A direct connection to YouTube is required.': 'Livechatt stöds för närvarande inte med Invidious API. En direktanslutning till YouTube krävs.'
   Published:
     In less than a minute: Mindre än en minut
