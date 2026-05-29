@@ -41,7 +41,7 @@ function writeFile(users) {
 }
 
 function bootstrapFromEnv() {
-  const raw = process.env.FREETUBE_USERS ?? 'default'
+  const raw = process.env.FREETUBE_USERS ?? 'guest'
   const ids = [...new Set(
     raw.split(',').map(sanitizeName).filter(Boolean)
   )]

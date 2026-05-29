@@ -58,8 +58,6 @@ router.delete('/api/users/:id', (req, res) => {
 // ── Root & per-user SPA ───────────────────────────────────────────────────────
 
 router.get('/', (_req, res) => {
-  const users = getUsers()
-  if (users.length === 1) return res.redirect(302, `/u/${users[0].id}/`)
   res.type('html').send(buildPickerHtml())
 })
 
@@ -75,10 +73,6 @@ router.get(['/u/:username/', '/u/:username/*'], (req, res) => {
 })
 
 // ── Picker HTML ───────────────────────────────────────────────────────────────
-
-function esc(str) {
-  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))
-}
 
 function buildPickerHtml() {
   const colorSwatches = AVATAR_COLORS.map(c =>
