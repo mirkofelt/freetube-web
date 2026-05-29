@@ -1,0 +1,18 @@
+FreeTube Web
+============
+
+This software is a modified version of FreeTube
+(https://github.com/FreeTubeApp/FreeTube).
+
+Original work: Copyright (C) FreeTube Contributors
+               Licensed under AGPL-3.0-or-later
+
+Modifications: Self-hosted web packaging — Express server, Docker container,
+               multi-user support, PoToken proxy via Playwright, Unraid template.
+               Source of modifications: https://github.com/mirkofelt/freetube-web
+
+The full text of the AGPL-3.0-or-later license is included in the LICENSE file.
+
+As required by the GNU Affero General Public License version 3 §13:
+Users interacting with this software over a network may obtain the
+Corresponding Source at: https://github.com/mirkofelt/freetube-web

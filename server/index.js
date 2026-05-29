@@ -13,6 +13,12 @@ const PORT = process.env.PORT ?? 8080
 
 app.use(express.json({ limit: '64kb' }))
 
+// AGPL §13: inform network users where to obtain the corresponding source.
+app.use((_req, res, next) => {
+  res.setHeader('X-Source-Code', 'https://github.com/mirkofelt/freetube-web')
+  next()
+})
+
 // Same-origin guard for all /api/* endpoints.
 app.use('/api', (req, res, next) => {
   const origin = req.headers.origin
@@ -50,6 +56,6 @@ module.exports = app
 
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`FreeTube web server listening on port ${PORT}`)
+    console.warn(`FreeTube web server listening on port ${PORT}`)
   })
 }
