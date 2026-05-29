@@ -65,16 +65,25 @@ function runApp() {
     ? new Set(__FREETUBE_ALLOWED_PATHS__)
     : new Set()
 
-  if (process.env.NODE_ENV === 'production') {
-    protocol.registerSchemesAsPrivileged([{
-      scheme: 'app',
+  protocol.registerSchemesAsPrivileged([
+    {
+      scheme: 'imagecache',
       privileges: {
-        standard: true,
         secure: true,
-        supportFetchAPI: true
+        corsEnabled: true
       }
-    }])
-  }
+    },
+    ...(process.env.NODE_ENV === 'production'
+      ? [{
+          scheme: 'app',
+          privileges: {
+            standard: true,
+            secure: true,
+            supportFetchAPI: true
+          }
+        }]
+      : []),
+  ])
 
   const ROOT_APP_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:9080' : 'app://bundle/index.html'
 

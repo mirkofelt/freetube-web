@@ -399,7 +399,10 @@ Settings:
     Max Video Playback Rate: Vitesse maximale de lecture vidéo
     Screenshot:
       Enable: Activer les captures d’écran
-      Ask Path: Demander le dossier de sauvegarde
+      Modes:
+        Ask Path: Demander le dossier de sauvegarde
+        Save To Folder: Enregistrer dans un répertoire
+        Clipboard: Copier dans le presse-papier
       Folder Button: Sélectionner un dossier
       Error:
         Forbidden Characters: Caractères interdits
@@ -409,6 +412,7 @@ Settings:
       Format Label: Format des captures d’écran
       File Name Label: Modèle de nom de fichier
       Folder Label: Dossier des captures d’écran
+      Mode: Mode de copie d'écran
     Enter Fullscreen on Display Rotate: Entrer en plein écran sur l'affichage Rotation
     Skip by Scrolling Over Video Player: Passer au suivant par la molette sur la vidéo
     Autoplay Interruption Timer: Minuteur d'arrêt de la lecture automatique
@@ -773,7 +777,7 @@ Video:
     Audio Tracks: Pistes audio
     Theatre Mode: Mode théâtre
     Exit Theatre Mode: Quitter le mode théâtre
-    Full Window: Fenêtre pleine
+    Full Window: Plein écran
     Show Stats: Afficher les stats
     Hide Stats: Masquer les stats
     Stats:
@@ -792,7 +796,7 @@ Video:
       Dropped Frames / Total Frames: 'Images perdues : {droppedFrames} / Images totales : {totalFrames}'
     Skipped segment: Segment {segmentCategory} ignoré
     TranslatedCaptionTemplate: '{language} (traduit depuis : {originalLanguage})'
-    Exit Full Window: Quitter la fenêtre pleine
+    Exit Full Window: Quitter le plein écran
     Take Screenshot: Prendre une capture d'écran
     You appear to be offline: Vous semblez être hors ligne.
     Playback will resume automatically when your connection comes back: La lecture reprendra automatiquement quand votre connexion reviendra.
@@ -1036,7 +1040,7 @@ Search Listing:
   Label:
     4K: 4K
     Subtitles: Sous-titres
-    Closed Captions: ST sourds et malentendants
+    Closed Captions: Sous-titres
     8K: 8K
     VR180: VR180
     360 Video: 360°
@@ -1113,3 +1117,5 @@ KeyboardShortcutPrompt:
 shortcutLabelSeparator: ｜
 Compact side navigation: Navigation latérale compacte
 Expand side navigation: Développer la navigation latérale
+Screenshot Clipboard Error: Échec de la copie de l'écran vers le presse-papier
+Screenshot Clipboard Success: Copie d'écran enregistrée dans le presse-papier

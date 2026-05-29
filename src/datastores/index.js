@@ -19,7 +19,15 @@ if (process.env.IS_ELECTRON_MAIN) {
     return path
   }
 } else {
-  dbPath = (dbName) => `${dbName}.db`
+  // In the web build, databases live in the browser's IndexedDB via localForage.
+  // When the server injects window.__FT_USER_ID__ (multi-user mode), prefix every
+  // database name with the user ID so each user gets their own isolated storage.
+  dbPath = (dbName) => {
+    const userId = (typeof window !== 'undefined' && window.__FT_USER_ID__)
+      ? window.__FT_USER_ID__
+      : 'default'
+    return `${userId}/${dbName}.db`
+  }
 }
 
 /**

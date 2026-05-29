@@ -46,6 +46,8 @@ Search Filters:
   Search Filters: 'Lọc tìm kiếm'
   Prioritize:
     Most Relevant: 'Liên quan nhất'
+    Prioritize: Ưu tiên
+    Popularity: Mức độ phổ biến
   Time:
     Time: 'Thời gian'
     Any Time: 'Mọi lúc'
@@ -401,7 +403,8 @@ Settings:
       Quality Label: Chất lượng chụp màn hình
       File Name Label: Mẫu tên tệp
       Folder Label: Thư mục ảnh chụp màn hình
-      Ask Path: Yêu cầu thư mục lưu
+      Modes:
+        Ask Path: Yêu cầu thư mục lưu
       Folder Button: Chọn thư mục
       Error:
         Empty File Name: Tên tệp trống
@@ -629,6 +632,9 @@ About:
   these people and projects: những người và dự án này
   Discussions: Thảo luận
   AGPLv3: giấy phép AGPLv3
+  Licensed under the {licenseLink}: Được cấp phép theo {licenseLink}
+  Please read the {roomRulesLink}: Vui lòng đọc {roomRulesLink}
+  FreeTube is made possible by {creditsPageLink}: FreeTube được tạo ra bởi {creditsPageLink}
 Channel:
   Subscribe: 'Đăng ký'
   Unsubscribe: 'Hủy đăng ký'

@@ -406,9 +406,13 @@ Settings:
       Error:
         Forbidden Characters: 禁止的字元
         Empty File Name: 空的檔案名稱
-      Ask Path: 詢問儲存的資料夾
+      Modes:
+        Ask Path: 詢問儲存的資料夾
+        Save To Folder: 儲存至資料夾
+        Clipboard: 複製到剪貼簿
       Folder Label: 螢幕截圖資料夾
       File Name Tooltip: 您可以使用下方的變數。%Y 為四位數的年份。%M 為兩位數的月份。%D 為兩位數的日。%H 為兩位數的小時。%N 為兩位數的分鐘。%S 為兩位數的秒數。%T 為三位數的毫秒。%s 為影片的秒數。%t 為三位數的影片毫秒數。%i 為影片 ID。
+      Mode: 螢幕截圖模式
     Enter Fullscreen on Display Rotate: 在顯示旋轉時進入全螢幕
     Skip by Scrolling Over Video Player: 捲動影片播放器跳過
     Autoplay Interruption Timer: 自動播放中斷計時器
@@ -942,7 +946,7 @@ Profile:
   Edit Profile Name: 修改設定檔名稱
   Create Profile Name: 建立設定檔名稱
 The playlist has been reversed: 播放清單已反轉
-Download From Site: 從網站下載 點擊檢視更多
+Download From Site: 從網站下載
 Version {versionNumber} is now available!  Click for more details: 有新版本！最新版本是 {versionNumber} ！按此取得更多資訊
 This video is unavailable because of missing formats. This can happen due to country unavailability.: 沒有這個影片因為缺少格式。這個可能發生由於國家不可用。
 Tooltips:
@@ -1112,3 +1116,5 @@ KeyboardShortcutPrompt:
 shortcutLabelSeparator: ｜
 Compact side navigation: 簡潔側邊導航
 Expand side navigation: 展開側邊導航
+Screenshot Clipboard Success: 儲存螢幕截圖至剪貼簿
+Screenshot Clipboard Error: 複製螢幕截圖到剪貼簿失敗
