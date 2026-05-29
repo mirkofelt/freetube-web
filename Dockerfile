@@ -41,6 +41,7 @@ COPY --from=builder /build/dist/botGuardScript.js ./dist/botGuardScript.js
 
 # Copy server source
 COPY server/index.js         ./server/index.js
+COPY server/config.js        ./server/config.js
 COPY server/package.json     ./server/package.json
 COPY server/package-lock.json ./server/package-lock.json
 COPY server/routes/          ./server/routes/
