@@ -19,7 +19,7 @@ const AVATAR_COLORS = [
 ]
 
 function sanitizeName(name) {
-  return String(name).trim().toLowerCase().replace(/[^a-z0-9_-]/g, '')
+  return String(name).trim().toLowerCase().replaceAll(/[^\d_a-z-]/g, '')
 }
 
 function capitalize(str) {
