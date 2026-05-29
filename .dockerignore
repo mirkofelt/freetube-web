@@ -1,0 +1,28 @@
+# Version control
+.git
+.gitignore
+.gitattributes
+
+# Local dev artefacts
+node_modules
+dist
+server/node_modules
+
+# Docs and meta
+docs
+_icons
+*.md
+!README.md
+
+# Config files not needed in image
+lefthook.yml
+lefthook-local.yml.example
+eslint.config.mjs
+jsconfig.json
+stylelint.config.mjs
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.vscode
+.idea

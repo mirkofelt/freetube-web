@@ -452,6 +452,21 @@ export async function getLocalVideoInfo(id) {
       console.error('Local API, poToken generation failed', error)
       throw error
     }
+  } else {
+    try {
+      const resp = await fetch('/api/po-token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoId: id, context: JSON.stringify(webInnertube.session.context) }),
+      })
+      if (resp.ok) {
+        contentPoToken = (await resp.json()).poToken
+        webInnertube.session.player.po_token = contentPoToken
+      }
+    } catch (error) {
+      console.error('Local API, poToken generation failed', error)
+      throw error
+    }
   }
 
   const info = await webInnertube.getInfo(id, { po_token: contentPoToken })

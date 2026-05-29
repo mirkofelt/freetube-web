@@ -1,0 +1,108 @@
+name: Setup branch protection
+
+# Run once after the repository is created and at least one CI run has completed
+# (GitHub needs to have seen the check names before they can be required).
+# Trigger manually from Actions → Setup branch protection → Run workflow.
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  protect:
+    name: Apply branch protection rules
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Required to set branch protection and change the default branch.
+      administration: write
+      contents: write
+
+    steps:
+      - name: Set develop as default branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${{ github.repository }}" \
+            -f default_branch=develop
+
+      # ── master: protected production branch ────────────────────────────────
+      # - No direct pushes; changes only via PR from develop (or hotfix branches).
+      # - All CI checks and the Docker build must pass.
+      # - At least one approving review required.
+      # - Stale reviews dismissed on new commits.
+      - name: Protect master branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api \
+            --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${{ github.repository }}/branches/master/protection" \
+            --input - <<'EOF'
+          {
+            "required_status_checks": {
+              "strict": true,
+              "checks": [
+                { "context": "Lint" },
+                { "context": "Build web SPA" },
+                { "context": "Server tests" },
+                { "context": "Docker build" }
+              ]
+            },
+            "enforce_admins": false,
+            "required_pull_request_reviews": {
+              "dismiss_stale_reviews": true,
+              "require_code_owner_reviews": false,
+              "required_approving_review_count": 1
+            },
+            "restrictions": null,
+            "allow_force_pushes": false,
+            "allow_deletions": false,
+            "block_creations": false
+          }
+          EOF
+
+      # ── develop: default integration branch ───────────────────────────────
+      # - Feature PRs must pass CI (lint + build + tests) before merging.
+      # - No direct pushes from contributors; maintainers may push hotfixes.
+      # - No approval required (lean inner-loop), but CI must be green.
+      - name: Protect develop branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api \
+            --method PUT \
+            -H "Accept: application/vnd.github+json" \
+            "/repos/${{ github.repository }}/branches/develop/protection" \
+            --input - <<'EOF'
+          {
+            "required_status_checks": {
+              "strict": false,
+              "checks": [
+                { "context": "Lint" },
+                { "context": "Build web SPA" },
+                { "context": "Server tests" }
+              ]
+            },
+            "enforce_admins": false,
+            "required_pull_request_reviews": null,
+            "restrictions": null,
+            "allow_force_pushes": false,
+            "allow_deletions": false,
+            "block_creations": false
+          }
+          EOF
+
+      - name: Summary
+        run: |
+          echo "### Branch protection applied" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Branch | Rule |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|--------|------|" >> "$GITHUB_STEP_SUMMARY"
+          echo "| \`master\` | PR required, 1 approval, all CI + Docker checks must pass, no force-push |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| \`develop\` | PR required, CI checks must pass (lint + build + tests), no force-push |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Default branch | \`develop\` |" >> "$GITHUB_STEP_SUMMARY"

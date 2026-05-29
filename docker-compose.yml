@@ -1,0 +1,18 @@
+services:
+  freetube:
+    build: .
+    image: freetube-web:latest
+    container_name: freetube-web
+    ports:
+      - "${HOST_PORT:-8080}:${PORT:-8080}"
+    environment:
+      - NODE_ENV=production
+      - PORT=${PORT:-8080}
+      - FREETUBE_USERS=${FREETUBE_USERS:-default}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:${PORT:-8080}/api/health"]
+      interval: 30s
+      timeout: 5s
+      start_period: 15s
+      retries: 3
