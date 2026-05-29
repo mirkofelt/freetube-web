@@ -1,9 +1,11 @@
 'use strict'
 
-const { readFileSync, writeFileSync, existsSync } = require('fs')
+const { readFileSync, writeFileSync, existsSync, mkdirSync } = require('fs')
 const path = require('path')
 
-const USERS_FILE = path.join(__dirname, 'users.json')
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data')
+mkdirSync(DATA_DIR, { recursive: true })
+const USERS_FILE = path.join(DATA_DIR, 'users.json')
 
 const AVATAR_COLORS = [
   '#e62117', // red
@@ -17,7 +19,7 @@ const AVATAR_COLORS = [
 ]
 
 function sanitizeName(name) {
-  return String(name).trim().toLowerCase().replace(/[^a-z0-9_-]/g, '')
+  return String(name).trim().toLowerCase().replaceAll(/[^\d_a-z-]/g, '')
 }
 
 function capitalize(str) {

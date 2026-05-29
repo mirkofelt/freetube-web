@@ -10,7 +10,6 @@ server/node_modules
 
 # Docs and meta
 docs
-_icons
 *.md
 !README.md
 
