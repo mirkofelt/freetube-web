@@ -426,22 +426,10 @@ export async function writeFileWithPicker(
  * @returns {string} absolute web path
  */
 export function createWebURL(path) {
-  const url = new URL(window.location.href)
-  const { origin } = url
-  let windowPath = url.pathname
-  // Remove the html file name from the path
-  if (windowPath.endsWith('.html')) {
-    windowPath = windowPath.replace(/[^./]*\.html$/, '')
-  }
-  // Remove proceeding slash in given path if there is one
-  if (path.startsWith('/')) {
-    path = path.substring(1, path.length)
-  }
-  // Remove trailing slash if there is one
-  if (windowPath.endsWith('/')) {
-    windowPath = windowPath.substring(0, windowPath.length - 1)
-  }
-  return `${origin}${windowPath}/${path}`
+  const { origin } = new URL(window.location.href)
+  // Assets are always served from the root (publicPath='/'), so ignore pathname.
+  const cleanPath = path.startsWith('/') ? path.substring(1) : path
+  return `${origin}/${cleanPath}`
 }
 
 /**
