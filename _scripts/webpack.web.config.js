@@ -29,6 +29,7 @@ const config = {
   output: {
     path: path.join(__dirname, '../dist/web'),
     filename: '[name].js',
+    publicPath: '/',
   },
   externals: {
     'youtubei.js': '{}',
