@@ -14,16 +14,24 @@
 
 ---
 
-> **This is a self-hosted web fork of [FreeTube](https://github.com/FreeTubeApp/FreeTube).**  
-> The original FreeTube is a privacy-focused desktop YouTube client built with Electron.  
-> This fork packages the Vue 3 frontend as a Docker container you can run on a home server
-> and access from any browser — no Electron, no desktop install required.
+## ⚠️ This is a fork — not the official FreeTube project
+
+**The original FreeTube** is a privacy-focused desktop YouTube client for Windows, macOS, and Linux, built with Electron by the FreeTube team.
+
+➡️ **Official project:** https://github.com/FreeTubeApp/FreeTube  
+➡️ **Official website:** https://freetubeapp.io  
+➡️ **Download the desktop app:** https://github.com/FreeTubeApp/FreeTube/releases
+
+This repository (`mirkofelt/freetube-web`) is an **unofficial, community fork** that repackages FreeTube's Vue 3 frontend as a self-hosted web server. It is not affiliated with, endorsed by, or officially supported by the FreeTube project.
+
+If you're looking for the **desktop app**, go to the links above.  
+If you want to **self-host FreeTube in a browser** via Docker, you're in the right place.
 
 ---
 
-## What it is
+## What this fork adds
 
-| | FreeTube Desktop | **FreeTube Web (this fork)** |
+| | FreeTube Desktop (upstream) | **FreeTube Web (this fork)** |
 |---|---|---|
 | Interface | Electron desktop app | Any modern browser |
 | Install | Per-device download | One Docker container |
@@ -32,7 +40,7 @@
 | PoToken generation | Built-in (WebContentsView) | Express + Playwright (headless Chromium) |
 | Self-hosted | No | **Yes** |
 
-**Features carried over from upstream FreeTube:**
+**All core features are from upstream FreeTube:**
 - No ads, no tracking, no Google account required
 - Invidious API and local YouTube.js API support
 - Subscriptions, playlists, watch history — stored in your browser (no server database)
@@ -45,7 +53,7 @@
 
 ```bash
 # 1 — clone
-git clone https://github.com/your-username/freetube-web
+git clone https://github.com/mirkofelt/freetube-web
 cd freetube-web
 
 # 2 — build and start (takes a few minutes on first run; pulls Playwright/Chromium)
@@ -75,7 +83,13 @@ deleted from the picker without restarting the container.
 
 ## Unraid
 
-See the [Unraid section](#unraid-1) below or drop the template file directly into CA:
+Search **FreeTube Web** in the Community Applications plugin, or add the template URL manually:
+
+```
+https://raw.githubusercontent.com/mirkofelt/freetube-web/develop/unraid/freetube-web.xml
+```
+
+Or drop the template file from this repo directly into CA:
 
 ```
 unraid/freetube-web.xml
@@ -91,40 +105,6 @@ unraid/freetube-web.xml
 | `FREETUBE_USERS` | `default` | Comma-separated profile names. Single name = no picker shown. |
 | `NODE_ENV` | `production` | Set to `development` for verbose server errors |
 | `HOST_PORT` | `8080` | *(docker-compose only)* Host-side port mapping |
-
----
-
-## Unraid
-
-### Community Applications
-
-Search **FreeTube Web** in the Community Applications plugin, or install the template manually:
-
-1. Go to **Docker → Add Container → Advanced View**
-2. Paste the XML from [`unraid/freetube-web.xml`](./unraid/freetube-web.xml), or fill in:
-
-| Field | Value |
-|-------|-------|
-| Name | `freetube-web` |
-| Repository | `ghcr.io/your-username/freetube-web:latest` |
-| Network Type | `bridge` |
-| WebUI | `http://[IP]:[PORT:8080]/` |
-| Icon URL | `https://raw.githubusercontent.com/FreeTubeApp/FreeTube/development/_icons/iconColor.png` |
-
-**Port:**
-
-| Container | Host | Protocol |
-|-----------|------|----------|
-| 8080 | 8080 | TCP |
-
-**Variables:**
-
-| Name | Default | Description |
-|------|---------|-------------|
-| `FREETUBE_USERS` | `default` | Comma-separated user names |
-| `PORT` | `8080` | Must match the container port |
-
-No path mappings needed — all data lives in the browser.
 
 ---
 
@@ -155,7 +135,7 @@ Express server (Node.js)
 
 ## Building from source
 
-Requirements: **Node.js 20+**, **pnpm 9+**
+Requirements: **Node.js 22+**, **pnpm 11+**
 
 ```bash
 pnpm install
@@ -172,7 +152,7 @@ node server/index.js
 
 This fork tracks upstream FreeTube releases. See
 [`docs/upstream-update-runbook.md`](./docs/upstream-update-runbook.md)
-for the step-by-step process of pulling in new releases while skipping Electron-specific changes.
+for the step-by-step process of pulling in new releases.
 
 ---
 
