@@ -19,6 +19,7 @@ ENV LEFTHOOK=0
 RUN pnpm install --frozen-lockfile
 
 # Copy source tree (everything .dockerignore doesn't exclude)
+COPY _icons/ ./_icons/
 COPY _scripts/ ./_scripts/
 COPY src/ ./src/
 COPY static/ ./static/
