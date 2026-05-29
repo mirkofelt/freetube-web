@@ -35,6 +35,30 @@
     No additional containers required. No volumes or path mappings needed — all user data lives in the browser.
   </Requires>
 
+  <!-- AppData path — stores users.json (user profiles) -->
+  <Config
+    Name="AppData"
+    Target="/data"
+    Default="/mnt/user/appdata/freetube-web"
+    Mode="rw"
+    Description="Persistent storage for user profiles (users.json). Map this to your appdata share."
+    Type="Path"
+    Display="always"
+    Required="true"
+    Mask="false">/mnt/user/appdata/freetube-web</Config>
+
+  <!-- Data directory inside container (must match the volume target above) -->
+  <Config
+    Name="Data Directory"
+    Target="DATA_DIR"
+    Default="/data"
+    Mode=""
+    Description="Path inside the container where user data is stored. Must match the container path of the AppData volume above."
+    Type="Variable"
+    Display="advanced"
+    Required="false"
+    Mask="false">/data</Config>
+
   <!-- Web UI port -->
   <Config
     Name="WebUI Port"
