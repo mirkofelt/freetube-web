@@ -1,7 +1,7 @@
 # ─────────────────────────────────────────────
 # Stage 1: build the Vue SPA and botGuardScript
 # ─────────────────────────────────────────────
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 
 # Enable pnpm via corepack (ships with Node 20)
 RUN corepack enable
