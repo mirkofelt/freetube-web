@@ -356,7 +356,7 @@ async function getChannelLiveInvidious(channel, failedAttempts = 0) {
     let name
 
     if (result.videos.length > 0) {
-      name = result.videos.find(video => video.type === 'video' && video.author).author
+      name = result.videos.find(video => video.type === 'video' && video.author)?.author
     }
 
     return {
